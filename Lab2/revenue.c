@@ -91,7 +91,7 @@ int main(int argc, char** argv){
     //
     puts("\nThank You for using \"Temple\" store");
 
-    // exit successfully
+    //  program run successfully
     //
     exit(0);
 }

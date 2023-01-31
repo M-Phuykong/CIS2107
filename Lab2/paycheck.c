@@ -104,7 +104,7 @@ int main(int argc, char** argv){
 
     puts("Thank you for using \"TEMPLE HUMAN RESOURCES\"");
 
-    // exit successfully
+    //  program run successfully
     //
     exit(0);
 }
