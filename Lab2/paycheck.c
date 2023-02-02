@@ -17,14 +17,14 @@ int main(int argc, char** argv){
 
     // variable declaration
     //
-    double fract_part;
-    double int_part;
-    double employee_number;
-    float hourly_salary;
-    float weekly_time;
-    float regular_pay;
+    int hourly_salary;
+    int weekly_time;
+    int regular_pay;
     float overtime_pay;
     float net_pay;
+    double employee_number;
+    double fract_part;
+    double int_part;
 
     // print welcome message
     //
@@ -38,8 +38,8 @@ int main(int argc, char** argv){
     
     // if employee number is less than 0 or a float, exit
     //
-    fract_part = modf (employee_number, &int_part);
-    if (int_part < 0 || fract_part != 0){
+    fract_part = modf(employee_number, &int_part);
+    if (int_part < 0 || fract_part > 0){
         puts("\n\tThis is not a valid Employee Number.");
         puts("\tPlease run the program again");
         puts("\nThank you for using \"TEMPLE HUMAN RESOURCES\"");
@@ -49,7 +49,7 @@ int main(int argc, char** argv){
     // get user input for hourly salary
     //
     printf("%s" , "\tEnter Hourly Salary: ");
-    scanf("%f", &hourly_salary);
+    scanf("%d", &hourly_salary);
 
     // if hourly salary is less than 0, exit
     //
@@ -63,7 +63,7 @@ int main(int argc, char** argv){
     // get user input for weekly time
     //
     printf("%s" , "\tEnter Weekly Time: ");
-    scanf("%f", &weekly_time);
+    scanf("%d", &weekly_time);
     
     // if weekly time is less than 0, exit
     //
@@ -78,7 +78,7 @@ int main(int argc, char** argv){
     //
     if (weekly_time > 40){
         regular_pay = hourly_salary * 40;
-        overtime_pay = (weekly_time - 40) * 1.5 * hourly_salary;
+        overtime_pay = (weekly_time - 40) * 1.5 * (float)hourly_salary;
     }
     // no overtime
     //
@@ -98,8 +98,8 @@ int main(int argc, char** argv){
     printf("\tHourly Salary: $%.1f\n", (float)hourly_salary);
     printf("\tWeekly Time: %.1f\n", (float)weekly_time);
     printf("\tRegular Pay: $%.1f\n", (float)regular_pay);
-    printf("\tOvertime Pay: $%.1f\n", (float)overtime_pay);
-    printf("\tNet Pay: $%.1f\n", (float)net_pay);
+    printf("\tOvertime Pay: $%.1f\n", overtime_pay);
+    printf("\tNet Pay: $%.1f\n", net_pay);
     puts("\t==============================");
 
     puts("Thank you for using \"TEMPLE HUMAN RESOURCES\"");
