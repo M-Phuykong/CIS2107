@@ -16,8 +16,8 @@
 
 // function prototype
 //
-int cash_deposition(int*, int*);
-int cash_withdrawal(int*, int*);
+int cash_deposition(int*, int*, int*);
+int cash_withdrawal(int*, int*, int*);
 int check_balance(int*);
 int print_receipt();
 
@@ -36,6 +36,7 @@ int main(int argc, char **argv) {
     int input = 0;
     int total_deposit = 0;
     int total_withdrawal = 0;
+    int total_transaction = 0;
 
     // welcome message
     //
@@ -120,13 +121,13 @@ int main(int argc, char **argv) {
             // cash Withdrawal
             //
             case 2:
-                cash_withdrawal(&balance, &total_withdrawal);
+                cash_withdrawal(&balance, &total_withdrawal, &total_transaction);
                 break;
 
             // cash Deposit
             //
             case 3:
-                cash_deposition(&balance, &total_deposit);
+                cash_deposition(&balance, &total_deposit, &total_transaction);
                 break;
 
             // quit
@@ -149,6 +150,7 @@ int main(int argc, char **argv) {
     //
     printf("Total Amount Deposited: $%d\n", total_deposit);
     printf("Total Amount Withdrawal: $%d\n", total_withdrawal);
+    printf("Total Transaction: %d\n", total_transaction);
     printf("Current Balance: $%d\n", balance);
 
     // closing message
@@ -166,10 +168,11 @@ int main(int argc, char **argv) {
  *
  * @param balance a pointer to the current balance object
  * @param total_deposit a pointer to the total_deposit object
+ * @param total_transaction a pointer to the total_transaction object
  *
  * @return exit status 0
  */
-int cash_deposition(int *balance, int *total_deposit){
+int cash_deposition(int *balance, int *total_deposit, int *total_transaction){
 
     int input;
 
@@ -182,9 +185,9 @@ int cash_deposition(int *balance, int *total_deposit){
     puts("Please Input the Withdrawal Amount:");
     scanf("%d", &input);
 
-    if (input < 0)
+    if (input <= 0)
     {
-        puts("Withdrawal Amount cannot be Negative.\n");
+        puts("Withdrawal Amount cannot be Negative or Zero.\n");
         return 1;
     }
     else if ((input + *total_deposit) > 10000)
@@ -195,6 +198,7 @@ int cash_deposition(int *balance, int *total_deposit){
 
     *total_deposit += input;
     *balance += input;
+    (*total_transaction)++;
 
     print_receipt();
 
@@ -206,10 +210,11 @@ int cash_deposition(int *balance, int *total_deposit){
  *
  * @param balance a pointer to the current balance object
  * @param total_withdrawal a pointer to the total_withdrawal object
+ * @param total_transaction a pointer to the total_transaction object
  *
  * @return exit status 0
  */
-int cash_withdrawal(int *balance, int *total_withdrawal){
+int cash_withdrawal(int *balance, int *total_withdrawal, int * total_transaction){
 
     int input;
 
@@ -221,8 +226,8 @@ int cash_withdrawal(int *balance, int *total_withdrawal){
     puts("Please Input the Withdrawal Amount:");
     scanf("%d", &input);
 
-    if (input < 0){
-        puts("Withdrawal Amount cannot be Negative.\n");
+    if (input <= 0){
+        puts("Withdrawal Amount cannot be Negative or Zero.\n");
         return 1;
     }
     else if (input % 20 != 0)
@@ -237,6 +242,7 @@ int cash_withdrawal(int *balance, int *total_withdrawal){
 
     *total_withdrawal += input;
     *balance -= input;
+    (*total_transaction)++;
 
     print_receipt();
 
