@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define PIN 3014
+
 // function prototype
 //
 int cash_deposition(int*, int*, int*);
@@ -24,10 +26,6 @@ int print_receipt();
 // main function
 //
 int main(int argc, char **argv) {
-
-    // default PIN
-    //
-    const int PIN = 3014;
 
     // initialize local variable
     //
