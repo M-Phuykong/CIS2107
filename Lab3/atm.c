@@ -21,7 +21,7 @@
 int cash_deposition(int*, int*, int*);
 int cash_withdrawal(int*, int*, int*);
 int check_balance(int*);
-int print_receipt();
+int print_receipt(void);
 
 // main function
 //
