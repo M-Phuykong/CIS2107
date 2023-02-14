@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.csv_bi": "csv",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "stdlib.h": "c"
     }
 }
