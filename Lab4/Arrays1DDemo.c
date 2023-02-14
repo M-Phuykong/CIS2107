@@ -51,6 +51,7 @@ int main(int argc, char **argv){
     puts("Array after fill:");
     fillArray(arr, SIZE);
     print_array(arr, SIZE);
+    puts("");
 
     // Part 2: findWithRange
     //
@@ -63,6 +64,7 @@ int main(int argc, char **argv){
 
     printf("Max: %s%s%d%s \n", RESET, ANSI_COLOR_GREEN,
             findWithRange(arr, SIZE, 10, 19), RESET);
+    puts("");
 
     // Part 3: reverseArray
     //
@@ -75,7 +77,7 @@ int main(int argc, char **argv){
     puts("Reversed Array:");
     reverseArray(arr, SIZE);
     print_array(arr, SIZE);
-
+    puts("");
 
     // Part 4: reverseSelectedRangeWithinArray
     //
@@ -88,6 +90,7 @@ int main(int argc, char **argv){
     printf("Reversing between %d and %d:\n", 15, 24);
     reverseSelectedRangeWithinArray(arr, SIZE, 15, 24);
     print_array_range(arr, SIZE, 15, 24);
+    puts("");
 
     // Part 5: findSequence
     //
@@ -96,6 +99,7 @@ int main(int argc, char **argv){
 
     puts("Original Array:");
     print_array(arr, SIZE);
+    puts("");
 
     int input_1;
     int input_2;
