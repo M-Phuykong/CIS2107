@@ -47,6 +47,7 @@ int main(int argc, char **argv){
            "\t ===== Part 1: fillArray =====" RESET "\n");
     puts("Array before fill:");
     print_array(arr, SIZE);
+    puts("");
 
     puts("Array after fill:");
     fillArray(arr, SIZE);
@@ -71,8 +72,10 @@ int main(int argc, char **argv){
     printf(RESET ANSI_COLOR_YELLOW
         "\t ===== Part 3: reverseArray =====" RESET "\n");
 
+    puts("");
     puts("Original Array:");
     print_array(arr, SIZE);
+    puts("");
 
     puts("Reversed Array:");
     reverseArray(arr, SIZE);
@@ -84,8 +87,10 @@ int main(int argc, char **argv){
     printf(RESET ANSI_COLOR_YELLOW
         "\t ===== Part 4: reverseSelectedRangeWithinArray =====" RESET "\n");
 
+    puts("");
     puts("Original Array:");
     print_array_range(arr, SIZE, 15, 24);
+    puts("");
 
     printf("Reversing between %d and %d:\n", 15, 24);
     reverseSelectedRangeWithinArray(arr, SIZE, 15, 24);
@@ -96,7 +101,8 @@ int main(int argc, char **argv){
     //
     printf(RESET ANSI_COLOR_YELLOW
            "\t ===== Part 5: findSequence =====" RESET "\n");
-
+    
+    puts("");
     puts("Original Array:");
     print_array(arr, SIZE);
     puts("");
