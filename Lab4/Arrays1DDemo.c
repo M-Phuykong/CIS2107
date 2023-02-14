@@ -116,7 +116,7 @@ int main(int argc, char **argv){
     if (index != -1){
         printf("Sequence found at index %d\n", index);
     } else {
-        printf("Sequence not found.");
+        printf("Sequence not found.\n");
     }
 
     // run successfully
