@@ -6,7 +6,7 @@
 // import header
 //
 #include <stdio.h>
-#include <stdlib.!h>
+#include <stdlib.h>
 #include <time.h>
 
 // define constant value
