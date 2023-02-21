@@ -10,21 +10,23 @@
 #include <stdlib.h>
 #include <limits.h>
 
+// delcare row and col variable
+//
+static int row;
+static int col;
+
 // function prototype
-int columnSum(size_t row, size_t col, size_t colChoice, const int arr[row][col]);
-void displayOutputs(size_t row, size_t col, const int arr[row][col]);
-bool isSquare(size_t row, size_t col);
-int max(size_t row, size_t col, const int arr[row][col]);
-int rowSum(size_t col, const int row[]);
+int columnSum(size_t colChoice, const int arr[row][col]);
+void displayOutputs(const int arr[row][col]);
+bool isSquare();
+int max(const int arr[row][col]);
+int rowSum(const int row[]);
+
 
 // main function
 //
 int main(int argc, char **argv){
 
-    // delcare row and col variable
-    //
-    int row;
-    int col;
 
     puts("Let's create a 2Dim array!");
 
@@ -56,7 +58,7 @@ int main(int argc, char **argv){
     // iterate through row and get the sum of each row
     //
     for (size_t r = 0; r < row; r++){
-        printf("Sum of row %zu = %d\n", r + 1, rowSum(col, arr[r]));
+        printf("Sum of row %zu = %d\n", r + 1, rowSum(arr[r]));
     }
 
     puts("");
@@ -64,14 +66,14 @@ int main(int argc, char **argv){
     // iterate through the col and get the sum of each col
     //
     for (size_t c = 0; c < col; c++){
-        printf("Sum of col %zu = %d\n", c + 1, columnSum(row, col, c, arr));
+        printf("Sum of col %zu = %d\n", c + 1, columnSum(c, arr));
     }
 
     puts("");
 
     // check if the array is a square
     //
-    bool square = isSquare(row, col);
+    bool square = isSquare();
     if (square)
         puts("This is a square array.");
     else
@@ -82,7 +84,7 @@ int main(int argc, char **argv){
     // prints out the 2d array
     //
     puts("Here is your 2Dim array:");
-    displayOutputs(row, col, arr);
+    displayOutputs(arr);
 
     // return successfully
     //
@@ -92,14 +94,12 @@ int main(int argc, char **argv){
 /**
  * columnSum: Get the sum of the chosen column
  *
- * @param row the 2d array row size
- * @param col the 2d array column size
  * @param colChoice the column index to sum
  * @param arr the 2D array
  *
  * @return sum of the column
  */
-int columnSum(size_t row, size_t col, size_t colChoice, const int arr[row][col])
+int columnSum(size_t colChoice, const int arr[row][col])
 {
 
     int sum = 0;
@@ -119,13 +119,11 @@ int columnSum(size_t row, size_t col, size_t colChoice, const int arr[row][col])
 /**
  * displayOutputs: Print the 2D Array
  *
- * @param row the 2d array row size
- * @param col the 2d array column size
  * @param arr the 2D array
  *
  * @return void
  */
-void displayOutputs(size_t row, size_t col, const int arr[row][col]){
+void displayOutputs(const int arr[row][col]){
 
     // output contents of array
     //
@@ -151,12 +149,9 @@ void displayOutputs(size_t row, size_t col, const int arr[row][col]){
 /**
  * isSquare: Check if 2D array is a square
  *
- * @param row the 2d array row size
- * @param col the 2d array column size
- *
  * @return bool
  */
-bool isSquare(size_t row, size_t col){
+bool isSquare(){
 
     if (row == col){
         return true;
@@ -168,13 +163,11 @@ bool isSquare(size_t row, size_t col){
 /**
  * max: Get the max of the 2D array
  *
- * @param row the 2d array row size
- * @param col the 2d array column size
  * @param arr the 2D array
  *
  * @return max
  */
-int max(size_t row, size_t col, const int arr[row][col]){
+int max(const int arr[row][col]){
 
     int res = INT_MIN;
 
@@ -199,12 +192,11 @@ int max(size_t row, size_t col, const int arr[row][col]){
 /**
  * rowSum: Get the sum of the chosen row
  *
- * @param col the 2d array column size
  * @param row a 1D array consisting of the row
  *
  * @return sum of the row
  */
-int rowSum(size_t col, const int row[]){
+int rowSum(const int row[]){
 
     int sum = 0;
 
