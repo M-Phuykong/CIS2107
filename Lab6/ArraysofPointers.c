@@ -58,6 +58,8 @@ int main(int argc, char const *argv[])
     void (*processGrades[FUNCTION_NUM])(int, int, const int [students][exams])=
                                     {printArray, minimum, maximum, average};
 
+    // get user input for the array size
+    //
     printf("%sEnter the number of students:\n%s", ANSI_COLOR_YELLOW, RESET);
     scanf("%d", &students);
 
@@ -68,6 +70,8 @@ int main(int argc, char const *argv[])
 
     int studentGrades[students][exams];
 
+    // fill the array with user's input
+    //
     for (size_t r = 0; r < students; r++){
         for (size_t c = 0; c < exams; c++){
 
@@ -78,7 +82,12 @@ int main(int argc, char const *argv[])
     }
     puts("");
 
+    // do while loop to show the menu for the user
+    //
     do {
+
+        // menu
+        //
         printf("%s%s", ANSI_COLOR_YELLOW ,"Enter a choice:\n");
         printf("\t%s%s%d%s Print the array of grades\n", RESET, ANSI_COLOR_GREEN, PRINT_ARRAY, RESET);
         printf("\t%s%s%d%s Find the minimum grade\n", RESET, ANSI_COLOR_GREEN, MINIMUM, RESET);
@@ -121,16 +130,29 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
+/**
+ * printArray: print the array in a a readable format
+ *
+ * @param students the number of row
+ * @param exams the number of column
+ * @param grades 2D array
+ *
+ * @return void
+ */
 void printArray(int students, int exams, const int grades[students][exams]){
 
     printf("%sThe array is:\n%s", ANSI_COLOR_BLUE, RESET);
     printf("%15s", " ");
 
+    // print the header
+    //
     for (size_t exam = 0; exam < exams; exam++){
         printf("%s  [%zu]", ANSI_COLOR_BLUE, exam);
     }
     puts(RESET);
 
+    // iterate through the array and print the data
+    //
     for (size_t i = 0; i < students; i++){
 
         printf("%s\nstudentGrades[%zu]  %s", ANSI_COLOR_BLUE, i, RESET);
@@ -145,50 +167,98 @@ void printArray(int students, int exams, const int grades[students][exams]){
 
     puts(RESET);
     puts("");
-
 }
 
+/**
+ * minimum: find the minimum and print it out
+ *
+ * @param students the number of row
+ * @param exams the number of column
+ * @param grades 2D array
+ *
+ * @return void
+ */
 void minimum(int students, int exams, const int grades[students][exams]){
     int lowest_grade = INT_MAX;
 
+    // iterate through the array
+    //
     for (size_t r = 0; r < students; r++){
         for (size_t c = 0; c < exams; c++){
+
+            // update the lowest grade if current grade is lower
+            //
             if (grades[r][c] < lowest_grade)
                 lowest_grade = grades[r][c];
         }
     }
 
+    // print the result
+    //
     printf("%sLowest grade: %d\n%s", ANSI_COLOR_BLUE, lowest_grade, RESET);
     puts("");
 }
 
+/**
+ * maximum: find the maximum and print it out
+ *
+ * @param students the number of row
+ * @param exams the number of column
+ * @param grades 2D array
+ *
+ * @return void
+ */
 void maximum(int students, int exams, const int grades[students][exams]){
     int highest_grade = INT_MIN;
 
+    // iterate through the array
+    //
     for (size_t r = 0; r < students; r++) {
         for (size_t c = 0; c < exams; c++){
+
+            // update the highest grade if the current grade is higher
+            //
             if (grades[r][c] > highest_grade)
                 highest_grade = grades[r][c];
         }
     }
 
+    // print the result
+    //
     printf("%sHighest grade: %d\n%s", ANSI_COLOR_BLUE, highest_grade, RESET);
     puts("");
 }
 
+/**
+ * average: print out the average grade for each student
+ *
+ * @param students the number of row
+ * @param exams the number of column
+ * @param grades 2D array
+ *
+ * @return void
+ */
 void average(int students, int exams, const int grades[students][exams]){
 
     float average = 0;
 
+    // iterate through the array
+    //
     for (size_t r = 0; r < students; r++){
 
         average = 0;
 
+        // add all of the grade for the current student
+        //
         for (size_t c = 0; c < exams; c++)
             average += grades[r][c];
 
+        // get the mean of the current student
+        //
         average /= exams;
 
+        // print out the result
+        //
         printf("%sThe average grade for student %zu is %.2f\n%s",ANSI_COLOR_BLUE ,r, average, RESET);
     }
 
