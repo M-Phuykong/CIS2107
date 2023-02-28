@@ -22,6 +22,8 @@ and each average.
 #include <limits.h>
 
 // define inline constant value
+//
+#define FUNCTION_NUM 4
 #define ANSI_COLOR_RED "\x1b[31m"
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_YELLOW "\x1b[33m"
@@ -37,10 +39,6 @@ void minimum(int students, int exams, const int grades[students][exams]);
 void maximum(int students, int exams, const int grades[students][exams]);
 void average(int students, int exams, const int grades[students][exams]);
 
-// constant declaration
-//
-const int FUNCTION_NUM = 4;
-
 // declare enum for the choices of the function
 //
 enum CHOICES {PRINT_ARRAY, MINIMUM, MAXIMUM, AVERAGE, EXIT};
@@ -50,12 +48,12 @@ static int exams;
 
 int main(int argc, char const *argv[])
 {
-    int userChoice = 0;
+    size_t userChoice = 0;
 
     // initialize array of 4 pointers to a function that each take 2 int
     // and a 2D array argument and returns void
     //
-    void (*processGrades[FUNCTION_NUM])(int, int, const int [students][exams])=
+    void (*processGrades[FUNCTION_NUM])(int, int, const int[][exams])=
                                     {printArray, minimum, maximum, average};
 
     // get user input for the array size
@@ -97,7 +95,7 @@ int main(int argc, char const *argv[])
         puts(RESET);
 
         printf("%sPlease select your options:\n%s", ANSI_COLOR_YELLOW, RESET);
-        scanf("%d", &userChoice);
+        scanf("%zu", &userChoice);
         puts("");
 
         switch (userChoice)
