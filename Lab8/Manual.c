@@ -62,24 +62,24 @@ int main()
     char line[] = "Hello world";
     reverse(line);
 
-    // // test for countSubstr
-    // char *line1 = "helloworldworld";
-    // char *substring = "world";
-    // printf("\n\nNumber of Substrings %s inside %s: %d\n", substring, line1,
-    //     countSubstr(line1, substring));
+    // test for countSubstr
+    char *line1 = "helloworldworld";
+    char *substring = "world";
+    printf("\n\nNumber of Substrings %s inside %s: %d\n", substring, line1,
+        countSubstr(line1, substring));
 
-    // // test for countChar
-    // char w = 'w';
-    // printf("\nNumber of character %c inside %s: %d\n", w, line1,
-    //     countChar(line1, w));
+    // test for countChar
+    char w = 'w';
+    printf("\nNumber of character %c inside %s: %d\n", w, line1,
+        countChar(line1, w));
 
     // // test for countAlpha
     // char str1[] = "Hello it's me.";
     // countAlpha(str1);
 
-    // // test for countWords
-    // char countstring[] = "hello world!";
-    // printf("\n\nNumber of words in string is: %d\n", countWords(countstring));
+    // test for countWords
+    char countstring[] = "hello world!";
+    printf("\n\nNumber of words in string is: %d\n", countWords(countstring));
 
     // // test for startsWithB
     // char *series[] = {"bored", "hello", "Brother", "manual", "bothered"};
@@ -186,39 +186,71 @@ void reverse(char *text) {
 
     char *pointer = strtok(text, " ");
 
-    puts("\n");
+    puts("");
 
-    int counter = 0;
-    char *words[strlen(text)];
-
-    while (pointer != NULL) {
-        words[counter] = pointer;
-        counter++;
-        pointer = strtok(NULL, " ");
+    if (text) {
+        reverse(strtok(NULL, " "));
+        printf("%s ", pointer);
     }
 
-    while(counter > 0){
-        printf("%s", words[counter]);
-        counter--;
-    }
 }
 
 // 9.(Counting the Occurrences of a Substring)
 int countSubstr(char *line, char *sub) {
+
+    int res = 0;
+
+    char *substring = strstr(line, sub);
+
+    while (substring != NULL) {
+        res++;
+        substring = strstr(substring + 1, sub);
+    }
+
+    return res;
 }
+
 // 10.(Counting the Occurrences of a Character)
 int countChar(char *line, char c) {
+    int res = 0;
+
+    char *substring = strchr(line, c);
+
+    while (substring != NULL)
+    {
+        res++;
+        substring = strchr(substring + 1, c);
+    }
+
+    return res;
 }
+
 // 11.(Counting the Letters of the Alphabet in a String)
 void countAlpha(char *string) {
+
+
 }
+
 // 12.(Counting the Number of Words in a String)
 int countWords(char *string) {
+
+    int res = 0;
+
+    char *substring = strtok(string, " ");
+
+    while (substring != NULL) {
+        res++;
+        substring = strtok(NULL, " ");
+    }
+
+    return res;
 }
+
 // 13.(Strings Starting with "b")
 void startsWithB(char *string[]) {
 
 }
+
 // 14.(Strings Ending with "ed")
 void endsWithed(char *string[]){
 
