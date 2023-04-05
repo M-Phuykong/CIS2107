@@ -3,6 +3,8 @@
         "*.csv_bi": "csv",
         "stdio.h": "c",
         "stdlib.h": "c",
-        "limits.h": "c"
+        "limits.h": "c",
+        "cstdlib": "c",
+        "string.h": "c"
     }
 }
