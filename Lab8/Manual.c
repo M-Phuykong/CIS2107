@@ -39,7 +39,7 @@ int main()
     upperLower(test);
 
     // test for convertStrtoInt
-    printf("\n\nThe sum of 4 strings is: %d", convertStrtoInt("3", "4", "5", "6"));
+    printf("\nThe sum of 4 strings is: %d", convertStrtoInt("3", "4", "5", "6"));
 
     // test for convertStrtoFloat
     printf("\n\nThe sum of 4 strings is: %.2f", convertStrtoFloat("3.5", "4.5",
@@ -59,31 +59,32 @@ int main()
     tokenizeTelNum(str);
 
     // test for reverse
+    puts("\n");
     char line[] = "Hello world";
     reverse(line);
 
     // test for countSubstr
     char *line1 = "helloworldworld";
     char *substring = "world";
-    printf("\n\nNumber of Substrings %s inside %s: %d\n", substring, line1,
+    printf("\n\nNumber of Substrings \"%s\" inside %s: %d\n", substring, line1,
         countSubstr(line1, substring));
 
     // test for countChar
     char w = 'w';
-    printf("\nNumber of character %c inside %s: %d\n", w, line1,
+    printf("\nNumber of character '%c' inside %s: %d\n", w, line1,
         countChar(line1, w));
 
-    // // test for countAlpha
-    // char str1[] = "Hello it's me.";
-    // countAlpha(str1);
+    // test for countAlpha
+    char str1[] = "Hello it's me.";
+    countAlpha(str1);
 
     // test for countWords
     char countstring[] = "hello world!";
-    printf("\n\nNumber of words in string is: %d\n", countWords(countstring));
+    printf("\nNumber of words in string is: %d\n", countWords(countstring));
 
-    // // test for startsWithB
-    // char *series[] = {"bored", "hello", "Brother", "manual", "bothered"};
-    // startsWithB(series);
+    // test for startsWithB
+    char *series[] = {"bored", "hello", "Brother", "manual", "bothered"};
+    startsWithB(series);
 
     // // test for endsWithed
     // endsWithed(series);
@@ -186,8 +187,6 @@ void reverse(char *text) {
 
     char *pointer = strtok(text, " ");
 
-    puts("");
-
     if (text) {
         reverse(strtok(NULL, " "));
         printf("%s ", pointer);
@@ -228,6 +227,15 @@ int countChar(char *line, char c) {
 // 11.(Counting the Letters of the Alphabet in a String)
 void countAlpha(char *string) {
 
+    int res[26] = {0};
+
+    for (size_t i = 0; string[i] != '\0'; i++)
+        if (isalpha(string[i]))
+            res[tolower(string[i]) - 'a']++;
+
+    for (size_t i = 0; i < 26; i++)
+        if (res[i] != 0)
+            printf("\n%lu, %lu | %d", i + 'A', i + 'a', res[i]);
 
 }
 
@@ -237,6 +245,8 @@ int countWords(char *string) {
     int res = 0;
 
     char *substring = strtok(string, " ");
+
+    puts("");
 
     while (substring != NULL) {
         res++;
@@ -248,6 +258,10 @@ int countWords(char *string) {
 
 // 13.(Strings Starting with "b")
 void startsWithB(char *string[]) {
+
+
+
+
 
 }
 
