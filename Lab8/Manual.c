@@ -14,7 +14,7 @@
 #include <time.h>
 
 // functions prototypes
-void *upperLower(const char *s);
+void upperLower(const char *s);
 int convertStrtoInt(const char *s1, const char *s2, const char *s3, const char *s4);
 float convertStrtoFloat(const char *s1, const char *s2, const char *s3, const char *s4);
 void compareStr(const char *s1, const char *s2);
@@ -26,8 +26,8 @@ int countSubstr(char *line, char *sub);
 int countChar(char *line, char c);
 int countWords(char *string);
 void countAlpha(char *string);
-void startsWithB(char *string[]);
-void endsWithed(char *string[]);
+void startsWithB(char *string[], size_t size);
+void endsWithed(char *string[], size_t size);
 
 int main()
 {
@@ -52,15 +52,17 @@ int main()
     comparePartialStr("Test1", "Test2", 4);
 
     // test for randomize
+    puts("\nRandomized Sentence:");
     randomize();
 
     // test for tokenize number
     char str[] = "(267) 436-6281";
+    puts("\n\nTokenized Number:");
     tokenizeTelNum(str);
 
     // test for reverse
-    puts("\n");
     char line[] = "Hello world";
+    printf("\n\nReversed string: \"%s\" \n", line);
     reverse(line);
 
     // test for countSubstr
@@ -76,22 +78,26 @@ int main()
 
     // test for countAlpha
     char str1[] = "Hello it's me.";
+    printf("\nNumber of alpha characters in \"%s\" :\n", str1);
     countAlpha(str1);
 
     // test for countWords
     char countstring[] = "hello world!";
     printf("\nNumber of words in string is: %d\n", countWords(countstring));
 
-    // test for startsWithB
     char *series[] = {"bored", "hello", "Brother", "manual", "bothered"};
-    startsWithB(series);
 
-    // // test for endsWithed
-    // endsWithed(series);
+    // test for startsWithB
+    puts("\nWords that start with B:");
+    startsWithB(series, sizeof(series) / sizeof(series[0]));
+
+    // test for endsWithed
+    puts("\nWords that end with ed:");
+    endsWithed(series, sizeof(series) / sizeof(series[0]));
 }
 
 // 1.(Displaying Strings in Uppercase and Lowercase)
-void *upperLower(const char *s) {
+void upperLower(const char *s) {
 
     // print the string in uppercase
     printf("%s", "\nThe string in uppercase is: ");
@@ -104,6 +110,7 @@ void *upperLower(const char *s) {
         printf("%c", tolower(s[i]));
 
     puts("");
+
 }
 
 // 2.(Converting Strings to Integers for Calculations)
@@ -173,8 +180,6 @@ int tokenizeTelNum(char *num) {
 
     char *pointer = strtok(num, "()- ");
 
-    puts("\n");
-
     while (pointer != NULL) {
         printf("%s", pointer);
         pointer = strtok(NULL, "()- ");
@@ -235,7 +240,7 @@ void countAlpha(char *string) {
 
     for (size_t i = 0; i < 26; i++)
         if (res[i] != 0)
-            printf("\n%lu, %lu | %d", i + 'A', i + 'a', res[i]);
+            printf("\n%c, %c | %d", (char)(i + 'A'), (char)(i + 'a'), res[i]);
 
 }
 
@@ -257,16 +262,24 @@ int countWords(char *string) {
 }
 
 // 13.(Strings Starting with "b")
-void startsWithB(char *string[]) {
+void startsWithB(char *string[], size_t size) {
 
-
-
-
+    for (size_t i = 0; i < size; i++)
+        if (string[i][0] == 'b' || string[i][0] == 'B')
+            printf("%s\n", string[i]);
 
 }
 
 // 14.(Strings Ending with "ed")
-void endsWithed(char *string[]){
+void endsWithed(char *string[], size_t size){
+
+    for (size_t i = 0; i < size; i++){
+
+        if (string[i][strlen(string[i]) - 2] == 'e' &&
+            string[i][strlen(string[i]) - 1] == 'd')
+            printf("%s\n", string[i]);
+
+    }
 
 }
 
