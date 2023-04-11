@@ -13,6 +13,14 @@
 #include <string.h>
 #include <time.h>
 
+#define ANSI_COLOR_RED "\x1b[31m"
+#define ANSI_COLOR_GREEN "\x1b[32m"
+#define ANSI_COLOR_YELLOW "\x1b[33m"
+#define ANSI_COLOR_BLUE "\x1B[34m"
+#define ANSI_COLOR_MAGENTA "\x1B[35m"
+#define ANSI_COLOR_CYAN "\x1B[36m"
+#define RESET "\x1B[0m"
+
 // functions prototypes
 void upperLower(const char *s);
 int convertStrtoInt(const char *s1, const char *s2, const char *s3, const char *s4);
@@ -36,99 +44,145 @@ int main()
 
     // test for upperLower
     const char test[] = "This iS A Test";
+    printf("\n%s%s1./ UpperLower Test\n%s", RESET, ANSI_COLOR_YELLOW, RESET);
     upperLower(test);
 
     // test for convertStrtoInt
-    printf("\nThe sum of 4 strings is: %d", convertStrtoInt("3", "4", "5", "6"));
+    printf("\n%s%s2./ The sum of 4 strings is:%s %d\n", RESET, ANSI_COLOR_YELLOW,
+                                    RESET, convertStrtoInt("3", "4", "5", "6"));
 
     // test for convertStrtoFloat
-    printf("\n\nThe sum of 4 strings is: %.2f", convertStrtoFloat("3.5", "4.5",
-                                                                "5.5", "6.5"));
+    printf("\n%s%s3./ The sum of 4 strings is:%s %.2f", RESET, ANSI_COLOR_YELLOW,
+                            RESET, convertStrtoFloat("3.5", "4.5", "5.5", "6.5"));
 
     // test for compareStr
+    printf("\n\n%s%s4./ compareStr Test%s", RESET, ANSI_COLOR_YELLOW, RESET);
     compareStr("Test1", "Test2");
 
     // test for comparePartialStr
+    printf("\n\n%s%s5./ comparePartialStr Test%s", RESET, ANSI_COLOR_YELLOW, RESET);
     comparePartialStr("Test1", "Test2", 4);
 
     // test for randomize
-    puts("\nRandomized Sentence:");
+    printf("\n%s%s6./ Randomized Sentence:%s\n", RESET, ANSI_COLOR_YELLOW, RESET);
     randomize();
 
     // test for tokenize number
     char str[] = "(267) 436-6281";
-    puts("\n\nTokenized Number:");
+    printf("\n\n%s%s7./ Tokenized Number: %s", RESET, ANSI_COLOR_YELLOW, RESET);
     tokenizeTelNum(str);
 
     // test for reverse
     char line[] = "Hello world";
-    printf("\n\nReversed string: \"%s\" \n", line);
+    printf("\n\n%s%s8./ Reversed string %s \"%s\"%s: %s", RESET,
+        ANSI_COLOR_YELLOW, ANSI_COLOR_BLUE, line, ANSI_COLOR_YELLOW, RESET);
     reverse(line);
 
     // test for countSubstr
     char *line1 = "helloworldworld";
     char *substring = "world";
-    printf("\n\nNumber of Substrings \"%s\" inside %s: %d\n", substring, line1,
-        countSubstr(line1, substring));
+    printf("\n\n%s%s9./ Number of Substrings %s\"%s\"%s inside %s\"%s\"%s:%s %d\n",
+            RESET, ANSI_COLOR_YELLOW, ANSI_COLOR_BLUE, substring,
+            ANSI_COLOR_YELLOW, ANSI_COLOR_BLUE, line1, ANSI_COLOR_YELLOW,
+            RESET, countSubstr(line1, substring));
 
     // test for countChar
     char w = 'w';
-    printf("\nNumber of character '%c' inside %s: %d\n", w, line1,
-        countChar(line1, w));
+    printf("\n%s%s10./ Number of character %s'%c'%s inside %s\"%s\"%s:%s %d\n",
+            RESET, ANSI_COLOR_YELLOW, ANSI_COLOR_BLUE, w, ANSI_COLOR_YELLOW,
+            ANSI_COLOR_BLUE, line1, ANSI_COLOR_YELLOW, RESET,
+            countChar(line1, w));
 
     // test for countAlpha
     char str1[] = "Hello it's me.";
-    printf("\nNumber of alpha characters in \"%s\" :\n", str1);
+    printf("\n%s%s11./ Number of alpha characters in %s\"%s\"%s:%s\n",
+            RESET, ANSI_COLOR_YELLOW, ANSI_COLOR_BLUE, str1, ANSI_COLOR_YELLOW,
+            RESET);
     countAlpha(str1);
 
     // test for countWords
     char countstring[] = "hello world!";
-    printf("\nNumber of words in string is: %d\n", countWords(countstring));
+    printf("\n%s%s12./ Number of words in string is:%s %d\n", RESET, ANSI_COLOR_YELLOW,
+        RESET, countWords(countstring));
 
     char *series[] = {"bored", "hello", "Brother", "manual", "bothered"};
 
     // test for startsWithB
-    puts("\nWords that start with B:");
+    printf("\n%s%s13./ Words that start with B:\n\n%s", RESET,
+        ANSI_COLOR_YELLOW, RESET);
     startsWithB(series, sizeof(series) / sizeof(series[0]));
 
     // test for endsWithed
-    puts("\nWords that end with ed:");
+    printf("\n%s%s14./ Words that ends with ed:\n\n%s", RESET,
+        ANSI_COLOR_YELLOW, RESET);
     endsWithed(series, sizeof(series) / sizeof(series[0]));
 }
 
-// 1.(Displaying Strings in Uppercase and Lowercase)
+/**
+ * upperLower: 1.Display Strings in Uppercase and Lowercase
+ *
+ * @param s pointer to a constant char to be printed in uppercase and lowercase
+ *
+ * @return void
+ */
 void upperLower(const char *s) {
 
     // print the string in uppercase
+    //
     printf("%s", "\nThe string in uppercase is: ");
     for (size_t i = 0; s[i] != '\0'; i++)
         printf("%c", toupper(s[i]));
 
     // print the string in lowercase
+    //
     printf("%s", "\nThe string in lowercase is: ");
     for (size_t i = 0; s[i] != '\0'; i++)
         printf("%c", tolower(s[i]));
 
     puts("");
-
 }
 
-// 2.(Converting Strings to Integers for Calculations)
+/**
+ * convertStrtoInt: 2.Converting Strings to Integers for Calculations
+ *
+ * @param s1 pointer to a constant char to be converted to int
+ * @param s2 pointer to a constant char to be converted to int
+ * @param s3 pointer to a constant char to be converted to int
+ * @param s4 pointer to a constant char to be converted to int
+ *
+ * @return int
+ */
 int convertStrtoInt(const char *s1, const char *s2,
                     const char *s3, const char *s4) {
 
     return atoi(s1) + atoi(s2) + atoi(s3) + atoi(s4);
 }
 
-// 3.(Converting Strings to Floating Point for Calculations)
+/**
+ * convertStrtoFloat: 3.Converting Strings to Floating Point for Calculations
+ *
+ * @param s1 pointer to a constant char to be converted to float
+ * @param s2 pointer to a constant char to be converted to float
+ * @param s3 pointer to a constant char to be converted to float
+ * @param s4 pointer to a constant char to be converted to float
+ *
+ * @return float
+ */
 float convertStrtoFloat(const char *s1, const char *s2,
                         const char *s3, const char *s4) {
 
     return strtof(s1, NULL) + strtof(s2, NULL) +
             strtof(s3, NULL) + strtof(s4, NULL);
-
 }
-// 4.(Comparing Strings)
+
+/**
+ * compareStr: 4.Comparing Strings
+ *
+ * @param s1 pointer to a constant char to be compared
+ * @param s2 pointer to a constant char to be compared
+ *
+ * @return void
+ */
 void compareStr(const char *s1, const char *s2) {
 
     int result = strcmp(s1, s2);
@@ -141,7 +195,15 @@ void compareStr(const char *s1, const char *s2) {
         printf("\n\n%s is smaller than %s.", s1, s2);
 }
 
-// 5.(Comparing Portions of Strings)
+/**
+ * comparePartialStr: 5.Comparing Partial Strings
+ *
+ * @param s1 pointer to a constant char to be compared
+ * @param s2 pointer to a constant char to be compared
+ * @param n number of characters to be compared
+ *
+ * @return void
+ */
 void comparePartialStr(const char *s1, const char *s2, int n) {
 
     int result = strncmp(s1, s2, n);
@@ -154,7 +216,11 @@ void comparePartialStr(const char *s1, const char *s2, int n) {
         printf("\n\n%s is smaller than %s.\n", s1, s2);
 }
 
-// 6.(Random Sentences)
+/**
+ * randomize: 6.Randomizing Strings
+ *
+ * @return void
+ */
 void randomize(void) {
 
     char *article[] = {"the", "a", "one", "some", "any"};
@@ -164,6 +230,7 @@ void randomize(void) {
     char *preposition[] = { "to", "from", "over", "under", "on"};
 
     // generate random sentences
+    //
     for (size_t i = 0; i < 20; i++) {
 
         if (i == 0)
@@ -175,7 +242,14 @@ void randomize(void) {
     }
 
 }
-// 7.(Tokenizing Telephone Numbers)
+
+/**
+ * tokenizeTelNum: 7.Tokenizing Telephone Numbers
+ *
+ * @param num pointer to a char to be tokenized
+ *
+ * @return int
+ */
 int tokenizeTelNum(char *num) {
 
     char *pointer = strtok(num, "()- ");
@@ -187,7 +261,14 @@ int tokenizeTelNum(char *num) {
 
     return 0;
 }
-// 8.(Displaying a Sentence with Its Words Reversed)
+
+/**
+ * reverse: 8.Display a Sentence with its Words Reversed
+ *
+ * @param text string to be reversed
+ *
+ * @return void
+ */
 void reverse(char *text) {
 
     char *pointer = strtok(text, " ");
@@ -199,7 +280,14 @@ void reverse(char *text) {
 
 }
 
-// 9.(Counting the Occurrences of a Substring)
+/**
+ * countSubstr: 9.Counting the Occurrences of a Substring
+ *
+ * @param line string
+ * @param sub substring that we are searching for
+ *
+ * @return int
+ */
 int countSubstr(char *line, char *sub) {
 
     int res = 0;
@@ -214,7 +302,14 @@ int countSubstr(char *line, char *sub) {
     return res;
 }
 
-// 10.(Counting the Occurrences of a Character)
+/**
+ * countChar: 10.Counting the Occurrences of a Character
+ *
+ * @param line string
+ * @param c character that we are counting occurrences of
+ *
+ * @return int
+ */
 int countChar(char *line, char c) {
     int res = 0;
 
@@ -229,7 +324,13 @@ int countChar(char *line, char c) {
     return res;
 }
 
-// 11.(Counting the Letters of the Alphabet in a String)
+/**
+ * countAlpha: 11.Count the Letters of the Alphabet in a String
+ *
+ * @param string string to be searched in
+ *
+ * @return void
+ */
 void countAlpha(char *string) {
 
     int res[26] = {0};
@@ -241,10 +342,15 @@ void countAlpha(char *string) {
     for (size_t i = 0; i < 26; i++)
         if (res[i] != 0)
             printf("\n%c, %c | %d", (char)(i + 'A'), (char)(i + 'a'), res[i]);
-
 }
 
-// 12.(Counting the Number of Words in a String)
+/**
+ * countWords: 12.Count the Number of Words in a String
+ *
+ * @param string string to be searched in
+ *
+ * @return int
+ */
 int countWords(char *string) {
 
     int res = 0;
@@ -261,7 +367,14 @@ int countWords(char *string) {
     return res;
 }
 
-// 13.(Strings Starting with "b")
+/**
+ * startsWithB: 13.Print strings starting with "b"
+ *
+ * @param string array of strings
+ * @param size size of the array
+ *
+ * @return void
+ */
 void startsWithB(char *string[], size_t size) {
 
     for (size_t i = 0; i < size; i++)
@@ -270,7 +383,14 @@ void startsWithB(char *string[], size_t size) {
 
 }
 
-// 14.(Strings Ending with "ed")
+/**
+ * endsWithed: 14.Print strings ending with "ed"
+ *
+ * @param string array of strings
+ * @param size size of the array
+ *
+ * @return void
+ */
 void endsWithed(char *string[], size_t size){
 
     for (size_t i = 0; i < size; i++){
@@ -278,8 +398,6 @@ void endsWithed(char *string[], size_t size){
         if (string[i][strlen(string[i]) - 2] == 'e' &&
             string[i][strlen(string[i]) - 1] == 'd')
             printf("%s\n", string[i]);
-
     }
-
 }
 
