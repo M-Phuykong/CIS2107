@@ -3,7 +3,7 @@
 
 // Returns 1 if all of the characters in the string are either upper or lower-
 // case of the the alphabet, 0 otherwise.
-//
+// ***
 int all_letters(char *s);
 
 // Returns the number of characters c in s1 such that b <= c <= t.
