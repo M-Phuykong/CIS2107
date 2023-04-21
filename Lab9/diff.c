@@ -16,4 +16,12 @@
  */
 int diff(char *s1, char *s2) {
 
+    int count = 0;
+
+    for (size_t i = 0; s1[i] != '\0' || s2[i] != '\0'; i++) {
+        if (s1[i] != s2[i])
+            count++;
+    }
+
+    return count;
 }
