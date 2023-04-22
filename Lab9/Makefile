@@ -1,10 +1,10 @@
 # Basic makefile
 
 all: OBJ LIB
-	gcc -o strtester strtester.c -L . -lstr2107
+	gcc -g -o strtester strtester.c -L . -lstr2107
 
 OBJ:
-	gcc -c *.c
+	gcc -g -c *.c
 
 LIB:
 	ar rcs libstr2107.a *.o

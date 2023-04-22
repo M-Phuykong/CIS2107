@@ -19,8 +19,10 @@ int main(int argc, char const *argv[])
 
     puts("#4 shorten Test");
     char* shorten_str = "Hello World";
+    printf("Before : %p\n", shorten_str);
     shorten(shorten_str, 5);
-    printf("%s\n", shorten_str);
+    printf("After : %p\n", shorten_str);
+    printf("%s", shorten_str);
 
     return 0;
 }
