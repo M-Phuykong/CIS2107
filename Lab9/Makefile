@@ -10,4 +10,4 @@ LIB:
 	ar rcs libstr2107.a *.o
 
 clean:
-	rm -f *.o *.a strtester
+	rm -f *.o *.a *.exe strtester
