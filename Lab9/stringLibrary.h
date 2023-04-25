@@ -60,7 +60,7 @@ int is_empty(char *s);
 //
 char *str_zip(char *s1, char *s2);
 
-//Changes s so that the first letter of every word is in upper case and
+// Changes s so that the first letter of every word is in upper case and
 // additional letter is in lower case
 //
 void capitalize(char *s);
