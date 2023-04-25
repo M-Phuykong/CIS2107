@@ -16,4 +16,16 @@
  */
 void take_last(char *s, int n) {
 
+    int length = 0;
+
+    while(s[length] != '\0')
+        length++;
+
+    if (n >= length)
+        return;
+
+    for (size_t i = 0; i < n; i++)
+        s[i] = s[length - n + i];
+
+    s[n] = '\0';
 }

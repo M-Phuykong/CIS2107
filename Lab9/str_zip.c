@@ -29,7 +29,7 @@ char *str_zip(char *s1, char *s2) {
     char *new_string = malloc(sizeof(char) * (s1_length + s2_length + 1));
 
     if (new_string == NULL) {
-        puts("Unable to malloc new string size");
+        puts("Error: Fail to allocate memory");
         return NULL;
     }
 

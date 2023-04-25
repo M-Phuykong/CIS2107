@@ -70,8 +70,25 @@ int main(int argc, char const *argv[])
     printf("%d\n\n", strcmp_ign_case(s14, s15));
 
     puts("# 15 take_last Test");
-    char s16[] = "Hello World";
-    
+    char s16[] = "hello";
+    take_last(s16, 3);
+    printf("%s\n\n", s16);
+
+    puts("# 16 dedup Test");
+    char s17[] = "Hello";
+    printf("%s\n\n", dedup(s17));
+
+    puts("# 17 pad Test");
+    char s18[] = "Hello";
+    printf("%s\n\n", pad(s18, 6));
+
+    puts("# 18 ends_with_ignore_case Test");
+    char s19[] = "Coding";
+    char s20[] = "ing";
+    printf("%d\n\n", ends_with_ignore_case(s19, s20));
+
+    puts("# 19 repeat Test");
+    char s21[] = "Hello";
 
 
     return 0;
