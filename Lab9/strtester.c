@@ -89,7 +89,30 @@ int main(int argc, char const *argv[])
 
     puts("# 19 repeat Test");
     char s21[] = "Hello";
+    printf("%s\n\n", repeat(s21, 3, '-'));
 
+    puts("# 20 replace Test");
+    char s22[] = "Steph is the X";
+    printf("%s\n\n", replace(s22, "X", "Best"));
+
+    puts("# 21 str_connect Test");
+    char *strs[] = {"Hello", "World", "Hello", "World"};
+    printf("%s\n\n", str_connect(strs, 4, '-'));
+
+    puts("# 22 rm_empties Test");
+    char *strs2[] = {"Hello", "World", " ","Hello", "World", " ", " ", NULL};
+    rm_empties(strs2);
+    for (size_t i = 0; strs2[i] != NULL; i++) {
+        printf("%s ", strs2[i]);
+    }
+    puts("\n");
+
+    puts("# 23 str_chop_all Test");
+    char s23[] = "Hello/World/hello/world";
+    char **strs3 = str_chop_all(s23, '+');
+    for (size_t i = 0; strs3[i] != NULL; i++) {
+        printf("%s ", strs3[i]);
+    }
 
     return 0;
 }

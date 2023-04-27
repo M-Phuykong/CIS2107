@@ -32,8 +32,22 @@ char *repeat(char *s, int x, char sep) {
         return NULL;
     }
 
-    
+    int counter = 0;
 
+    while (x > 0) {
+
+        for (size_t i = 0; i < length; i++) {
+            new_string[counter] = s[i];
+            counter++;
+        }
+
+        new_string[counter] = sep;
+        counter++;
+
+        x--;
+    }
+
+    new_string[--counter] = '\0';
 
     return new_string;
 }

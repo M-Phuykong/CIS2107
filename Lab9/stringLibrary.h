@@ -115,6 +115,7 @@ char *repeat(char *s, int x, char sep);
 // what is returned is the new string NBA rocks (but remember, pat could be longer
 // than an individual character and could occur multiple times).
 //
+// TODO
 char *replace(char *s, char *pat, char *rep);
 
 // Returns a string consisting of the first n strings in strs with the character c
@@ -127,7 +128,7 @@ char *str_connect(char **strs, int n, char c);
 // Words is an array of string terminated with a NULL pointer.The function
 // removes any empty strings(i.e., strings of length 0) from the array.
 //
-void rm_emtpies(char **words);
+void rm_empties(char **words);
 
 // Returns an array of string consisting of the characters in s split into
 // tokens based on the delimeter c, followed by a NULL pointer. For example,
