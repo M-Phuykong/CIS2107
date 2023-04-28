@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdlib.h>
 
 #include "stringLibrary.h"
 
@@ -24,8 +24,12 @@ void take_last(char *s, int n) {
     if (n >= length)
         return;
 
+    // replace all the beginning characters with the last n characters
+    //
     for (size_t i = 0; i < n; i++)
         s[i] = s[length - n + i];
 
+    // add the null character to cut the string off at the n characters
+    //
     s[n] = '\0';
 }

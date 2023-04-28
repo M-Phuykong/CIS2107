@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
 
 #include "stringLibrary.h"
@@ -19,6 +19,8 @@ int strcmp_ign_case(char *s1, char *s2) {
     char s1_char;
     char s2_char;
 
+    // compare all the characters by converting them to lowercase
+    //
     while (s1[i] != '\0' && s2[i] != '\0') {
 
         s1_char = tolower(s1[i]);

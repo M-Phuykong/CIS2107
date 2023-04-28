@@ -29,6 +29,9 @@ int ends_with_ignore_case(char *s, char *suff) {
     int start = length - suff_length;
     for (size_t i = start; i < length; i++) {
 
+        // if we found a mismatch character than we assume that the suffix
+        // does not exist
+        //
         if (tolower(s[i]) != tolower(suff[i - start]))
             return 0;
     }

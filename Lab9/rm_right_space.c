@@ -21,8 +21,10 @@ void rm_right_space(char *s1) {
         str_size++;
     }
 
+    // decrease the pointer until the last character that is not a whitespace
+    //
     while (s1[str_size] == ' ') {
-        str_size--;
+        s1--;
     }
 
     *s1 = '\0';

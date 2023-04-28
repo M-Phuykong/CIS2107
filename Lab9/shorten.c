@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 
 #include "stringLibrary.h"
@@ -10,7 +9,7 @@
  * @param s string
  * @param new_len new length
  *
- * @return  void
+ * @return void
  */
 void shorten(char *s, int new_len) {
 
@@ -22,5 +21,7 @@ void shorten(char *s, int new_len) {
     if (new_len >= str_len)
         return;
 
+    // shorten the string by setting the new length to the null terminator
+    //
     s[new_len] = '\0';
 }

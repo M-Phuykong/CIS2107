@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdlib.h>
 
 #include "stringLibrary.h"
 
@@ -12,6 +12,8 @@
  */
 int is_empty(char *s) {
 
+    // if we find a character then we know it is never empty
+    //
     while (*s != '\0') {
         if (*s != ' ')
             return 0;

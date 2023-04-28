@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -19,6 +18,10 @@ void capitalize(char *s) {
 
     while (s[i] != '\0'){
 
+        // Two conditions when we need to capitalize:
+        // 1. The first letter of the string
+        // 2. The letter after a space (start of a new word)
+        //
         if ((i == 0 && s[i] != ' ') || (space)){
             s[i] -= 32;
             space = false;

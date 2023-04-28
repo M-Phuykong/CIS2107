@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 #include "stringLibrary.h"
 
@@ -71,7 +70,7 @@ char *replace(char *s, char *pat, char *rep) {
         }
 
         else {
-        
+
             while (rep[j] != '\0') {
                 new_string[counter] = rep[j];
                 j++;

@@ -21,6 +21,8 @@ char *str_connect(char **strs, int n, char c) {
     int length = 0;
     int j = 0;
 
+    // find the total amount of characters in the array
+    //
     for (size_t i = 0; i  < n; i++) {
 
         j = 0;
@@ -31,10 +33,15 @@ char *str_connect(char **strs, int n, char c) {
         }
     }
 
+    // to calculate the length, we just count all the characters in the array
+    // and add the number of delimiters
+    //
     int new_length = length + (n - 1);
     int counter = 0;
     char *new_string = malloc(new_length + 1);
 
+    // go through the array and add the characters to the new string
+    //
     for (size_t i = 0; i < n; i++) {
 
         for (size_t j = 0; i < strs[i][j] != '\0'; j++) {

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdlib.h>
 
 #include "stringLibrary.h"
 
@@ -13,10 +13,11 @@
  */
 char *ptr_to(char *h, char *n) {
 
+    // returns the pointer when the the first character showed up
+    //
     while (*h != '\0')
     {
-        if (*h == *n)
-        {
+        if (*h == *n) {
             return h;
         }
         h++;

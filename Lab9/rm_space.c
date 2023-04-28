@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stddef.h>
-#include <stdint.h>
 #include <stdlib.h>
 
 #include "stringLibrary.h"
@@ -13,6 +10,9 @@
  * @return void
  */
 void rm_space(char *s1) {
+
+    // remove left and right whitespace by calling both functions
+    //
     rm_left_space(s1);
     rm_right_space(s1);
 }

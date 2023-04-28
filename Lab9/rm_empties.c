@@ -16,13 +16,14 @@ void rm_empties(char **words) {
     int i = 0;
     int word_count = 0;
 
-
     for (size_t i = 0; words[i] != NULL; i++) {
         if (words[i][0] != '\0') {
             word_count++;
         }
     }
 
+    // allocate 2d array
+    //
     char **new_words = malloc(sizeof(char *) * (word_count + 1));
     int counter = 0;
     int word_length = 0;
@@ -31,6 +32,8 @@ void rm_empties(char **words) {
 
         word_length = 0;
 
+        // check for the word length for each string
+        //
         for (size_t j = 0; words[i][j] != '\0'; j++) {
 
             if (words[i][j] != ' ')
@@ -39,6 +42,9 @@ void rm_empties(char **words) {
                 break;
         }
 
+        // if there is at least one character in the string then we know that
+        // the string is not empty
+        //
         if (word_length > 0) {
 
             new_words[counter] = malloc(word_length + 1);
@@ -54,10 +60,14 @@ void rm_empties(char **words) {
 
     new_words[counter] = NULL;
 
+    // copy all the new words into the old array
+    //
     for (size_t i = 0; i < word_count; i++) {
         words[i] = new_words[i];
     }
 
+    // free the new array from memory
+    //
     free(new_words);
 
 }

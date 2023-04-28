@@ -115,7 +115,6 @@ char *repeat(char *s, int x, char sep);
 // what is returned is the new string NBA rocks (but remember, pat could be longer
 // than an individual character and could occur multiple times).
 //
-// TODO
 char *replace(char *s, char *pat, char *rep);
 
 // Returns a string consisting of the first n strings in strs with the character c

@@ -26,8 +26,13 @@ char *str_zip(char *s1, char *s2) {
     while(s2[s2_length] != '\0')
         s2_length++;
 
+    // Allocate memory for the new string where the size is the sum of
+    // the length of s1 and s2 plus 1 for the null character
+    //
     char *new_string = malloc(sizeof(char) * (s1_length + s2_length + 1));
 
+    // check if we have enough memory
+    //
     if (new_string == NULL) {
         puts("Error: Fail to allocate memory");
         return NULL;
@@ -46,6 +51,7 @@ char *str_zip(char *s1, char *s2) {
     }
 
     // Check for the remaining characters in s1 and s2
+    //
     while (s1[i] != '\0')
         new_string[counter++] = s1[i++];
 

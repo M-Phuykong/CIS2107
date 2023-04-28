@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stddef.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -27,11 +25,20 @@ int diff(char *s1, char *s2) {
     while (s2[str2_length] != '\0')
         str2_length++;
 
+    // get the shortest string length to iterate through
+    //
     int len = (int) fmin((float) str1_length, (float)str2_length);
+
+    // check all the differences between the two strings with the shortest
+    // string length
+    //
     for (size_t i = 0; i < len; i++) {
         if (s1[i] != s2[i])
             count++;
     }
 
+    // if any of the two string is longer than the other then the differences
+    // of the two string's length will need to be added
+    //
     return count + abs(str1_length - str2_length);
 }

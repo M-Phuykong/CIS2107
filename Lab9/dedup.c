@@ -22,6 +22,10 @@ char *dedup(char *s) {
     while(s[length] != '\0')
         length++;
 
+    // create a hash table with the starting length of the string
+    // since the most item we can have is the length of the string
+    // (assuming every character is unique)
+    //
     char *hash = malloc(length);
 
     if (hash == NULL) {
@@ -51,7 +55,12 @@ char *dedup(char *s) {
             is_duplicate = false;
         }
 
+        // found new character
+        //
         if (!is_duplicate) {
+
+            // add it to the hashtable and the new string
+            //
             hash[counter] = s[i];
             new_string[counter] = s[i];
             counter++;
@@ -66,6 +75,8 @@ char *dedup(char *s) {
         return NULL;
     }
 
+    // free the hash table
+    //
     free(hash);
 
     return new_string;

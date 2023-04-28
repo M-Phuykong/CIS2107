@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stddef.h>
-#include <stdint.h>
 #include <stdlib.h>
 
 #include "stringLibrary.h"
@@ -16,10 +13,15 @@ void rm_left_space(char *s1) {
 
     char *tmp = s1;
 
+    // move pointer while there's a space
+    //
     while (*tmp == ' ') {
         tmp++;
     }
 
+    // we can then copy the string from the temporary pointer to the beginning
+    // of the string
+    //
     while (*tmp != '\0') {
         *s1 = *tmp;
         s1++;
