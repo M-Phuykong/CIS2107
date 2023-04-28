@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 
 #include "stringLibrary.h"
@@ -27,7 +28,11 @@ int diff(char *s1, char *s2) {
 
     // get the shortest string length to iterate through
     //
-    int len = (int) fmin((float) str1_length, (float)str2_length);
+    int len = 0;
+    if (str1_length >= str2_length)
+        len = str2_length;
+    else
+        len = str1_length;
 
     // check all the differences between the two strings with the shortest
     // string length

@@ -109,7 +109,7 @@ int main(int argc, char const *argv[])
 
     puts("# 23 str_chop_all Test");
     char s23[] = "Hello/World/hello/world";
-    char **strs3 = str_chop_all(s23, '+');
+    char **strs3 = str_chop_all(s23, '/');
     for (size_t i = 0; strs3[i] != NULL; i++) {
         printf("%s ", strs3[i]);
     }

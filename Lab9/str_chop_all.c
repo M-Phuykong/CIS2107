@@ -52,6 +52,12 @@ char **str_chop_all(char *s, char c) {
             str_length++;
         }
 
+        // there's no delimiter
+        //
+        if (str_length == length) {
+            break;
+        }
+
         // We allocate our memory based on the length of the string
         //
         new_string[counter] = malloc(str_length + 1);

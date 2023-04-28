@@ -51,7 +51,7 @@ char *pad(char *s, int d) {
         new_string[i] = s[i];
 
     for (size_t i = length; i < extra_space; i++)
-        new_string[i] = '-';
+        new_string[i] = ' ';
 
     new_string[extra_space] = '\0';
 
